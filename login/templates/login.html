@@ -5,20 +5,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
 <body>
-
+  <h1>Login</h1>
   <form action="{% url 'logar' %}" method="post">
     {% csrf_token %}  <!-- necessário para envio de dados via POST -->
-    Nome: <input type="text" name="nome" placeholder="Nome"> <br><br>
-    Email: <input type="email" name="email" placeholder="exempl@email.com"> <br><br>
-    Senha: <input type="password" name="senha" placeholder="Senha"> <br><br>
+    Email: <input type="email" name="email" placeholder="exemplo@email.com" required autofocus> <br><br>
+    Senha: <input type="password" name="senha" placeholder="Senha" required> <br><br>
     <button type="submit">Login</button>
   </form>
 
   <dialog id="userDialog">
-    Usuário não encontrado
+    Usuário não encontrado <p></p>
     <button id="register">Registrar</button>
     <button id="close">Fechar</button>
   </dialog>
@@ -35,5 +34,7 @@
   </script>
   
   <script src="{% static 'js/script.js' %}"></script>
+  <p>Não tem uma conta? <a href="{% url 'register' %}">Inscreva-se</a></p>
+
 </body>
 </html>
