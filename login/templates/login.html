@@ -1,16 +1,39 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-  <!-- campo nome -->
-  Nome: <input name="nome" type="text" placeholder="Nome"> <br><br>
-  <!-- campo email -->
-  Email: <input name="email" type="email" placeholder="exempl@email.com"> <br><br>
-  <!-- campo senha -->
-  Senha: <input name="pass" type="password" placeholder="Passwort"> <br><br>
+
+  <form action="{% url 'logar' %}" method="post">
+    {% csrf_token %}  <!-- necessário para envio de dados via POST -->
+    Nome: <input type="text" name="nome" placeholder="Nome"> <br><br>
+    Email: <input type="email" name="email" placeholder="exempl@email.com"> <br><br>
+    Senha: <input type="password" name="senha" placeholder="Senha"> <br><br>
+    <button type="submit">Login</button>
+  </form>
+
+  <dialog id="userDialog">
+    Usuário não encontrado
+    <button id="register">Registrar</button>
+    <button id="close">Fechar</button>
+  </dialog>
+
+  <script>
+    // Verifica se userNot foi definido e faz a conversão para booleano
+    let userNot = "{{ userNot|default:'false' }}" === "True";
+
+    // fazer essa droga aqui pq o Js nao aceita django
+    registerButton = document.getElementById('register')
+    registerButton.addEventListener("click", function () {
+      window.location.href = "{% url 'register' %}"; // Redireciona para a página de registro 
+      });
+  </script>
+  
+  <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>
