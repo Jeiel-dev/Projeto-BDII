@@ -22,12 +22,19 @@
   </form>
 
   <dialog id="dialog_register">
-    As senhas não coincidem
+    As senhas não coincidem <br>
     <button id="close">Fechar</button>
   </dialog>
 
+  <dialog id="jaCadastrado">
+    Usuario já cadastrado <br>
+    <button id="close_cad">Fechar</button>
+  </dialog>
+
+
   <script>
-    let passNot = "{{ passNot|default:'false' }}" === "True";
+    let passNot = "{{ passNot|default:'false' }}" === "True"
+    let jaCad = "{{ jaCad|default:'false' }}" === "True"
   </script>
 
   <script src="{% static 'js/register.js' %}"></script>

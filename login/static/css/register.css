@@ -70,7 +70,7 @@ dialog {
   text-align: center;
 }
 
-dialog button#close {
+dialog button#close, dialog button#close_cad {
   padding: 8px 16px;
   background-color: #ff4d4d;
   color: #fff;
@@ -80,7 +80,7 @@ dialog button#close {
   margin-top: 10px;
 }
 
-dialog button#close:hover {
+dialog button#close:hover, dialog button#close_cad:hover {
   background-color: #cc0000;
 }
 

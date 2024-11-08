@@ -19,7 +19,7 @@ def register_user(request):
             user.save()
             return redirect('logar')
         except Exception as e:
-            return redirect('register')
+            return render(request, 'register.html', {'jaCad': True})
 
     return render(request, 'register.html')
 
